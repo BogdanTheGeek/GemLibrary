@@ -1,0 +1,29 @@
+{
+  "name": "gemlibrary",
+  "version": "1.0.0",
+  "description": "Fast Open Source Gem Library",
+  "homepage": "https://github.com/BogdanTheGeek/GemLibrary#readme",
+  "bugs": {
+    "url": "https://github.com/BogdanTheGeek/GemLibrary/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BogdanTheGeek/GemLibrary.git"
+  },
+  "license": "CC0-1.0",
+  "author": "Bogdan Ionescu",
+  "type": "module",
+  "main": "organise.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "sharp": "^0.34.5",
+    "@xmldom/xmldom": "^0.9.10"
+
+  }
+}

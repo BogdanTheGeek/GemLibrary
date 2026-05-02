@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://fav.farm/💎" />
+    <title>Gem Library</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --light-text: black;
+  --light-text-secondary: #333;
+  --light-button: gray;
+  --light-button-hover: darkgray;
+  --light-button-active: lightgray;
+  --light-button-disabled: #ccc;
+  --light-bg: white;
+  --light-bg-secondary: #e0e0e0;
+  --light-outline: #ccc;
+
+  --dark-text: white;
+  --dark-text-secondary: #ccc;
+  --dark-button: #ffffff;
+  --dark-button-hover: #d2d2d2;
+  --dark-button-active: #b3b3b3;
+  --dark-button-disabled: #666;
+  --dark-bg: #333;
+  --dark-bg-secondary: #444;
+  --dark-outline: #666;
+}
+
+body {
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-text), var(--dark-text));
+  font-family: Arial, sans-serif;
+  overflow-y: scroll;
+  margin: 0px  100px 0px 100px;
+}
+
+p {
+   margin-top: 4px;
+}
+
+h1 {
+   margin-bottom: 30px;
+   text-align: center;
+}
+
+.grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 20px;
+   margin: 0 auto;
+   justify-items: center;
+}
+
+.grid-item {
+   aspect-ratio: 1;
+   cursor: pointer;
+   overflow: hidden;
+   border-radius: 8px;
+   background-color: white;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   transition: transform 0.2s ease-out;
+   max-width: 200px;
+}
+
+.grid-item:hover {
+   transform: scale(2);
+   z-index: 10;
+}
+
+.grid-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+#search-input {
+  width: 100%;
+  max-width: 700px;
+  height: 30px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .body {
+     margin: 0px 16px;
+  }
+  .panel-content {
+     padding: 0 10px 10px 10px;
+  }
+  .panel-content img {
+     width: 100%;
+     border-radius: 16px;
+  }
+}
+
+#search-results {
+  margin-top: 20px;
+}
+
+#result-count-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+}
+
+button {
+  background-color: light-dark(var(--light-button), var(--dark-button));
+  color: light-dark(var(--light-bg), var(--dark-bg));
+  padding: 10px 20px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  margin: 10px;
+}
+
+.expand-button {
+
+  margin: auto;
+  display: block;
+  text-align: center;
+  padding: 8px 18px;
+  min-width: fit-content;
+}
+
+button:disabled {
+  background-color: light-dark(var(--light-button-disabled), var(--dark-button-disabled));
+  color: #666;
+  cursor: not-allowed;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#color-scheme-container {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.side-panel {
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: light-dark(var(--light-bg-secondary), var(--dark-bg-secondary));
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  height: 100dvh;
+  transition: 0.2s ease-out;
+  box-sizing: border-box;
+  padding-top: 10px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+.panel-content {
+  padding: 0 20px 20px 20px;
+  gap: 15px;
+}
+.panel-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.panel-content img {
+   max-width: 400px;
+   border-radius: 16px;
+}
+#panel-info {
+  padding: 20px;
+  gap: 15px;
+}
+
+.close-btn {
+  position: sticky;
+  top: 10px;
+  left: 15px;
+  z-index: 1;
+  font-size: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  color: light-dark(var(--light-text), var(--dark-text));
+  text-shadow: 0px 0px 3px light-dark(var(--dark-text), var(--light-text));
+}
+
+.download-button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  background-color: light-dark(var(--light-button), var(--dark-button));
+  color: light-dark(var(--light-bg), var(--dark-bg));
+  padding: 10px 20px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  margin: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Just below the side panel (1000) */
+  display: none; /* Hidden by default */
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+   <div class="app">
+      <h1>Gem Library</h1>
+      <div>
+      <input type="checkbox" id="live-results">
+      <label for="live-results">Live Results</label>
+      </div>
+      <input type="search" id="search-input" placeholder="Search: round ri<1.7 gear=96"> <br>
+      <div id="result-count-label" aria-live="polite">Total gems: 0</div>
+      <button id="im_feeling_lucky" onclick="getRandomModel()">I'm Feeling Lucky</button>
+   </div>
+   <div id="color-scheme-container">
+      <input type="checkbox" id="color-scheme-toggle">
+      <label for="color-scheme">Dark Mode</label>
+   </div>
+
+   <div class="grid" id="search-results">
+   </div>
+
+   <div id="panel-overlay" class="overlay" onclick="closePanel()"></div>
+
+   <div id="side-panel" class="side-panel">
+     <button class="close-btn" onclick="closePanel()">&times;</button>
+     
+     <div class="panel-content">
+       <h2 id="panel-title">Item Details</h2>
+
+       <div class="panel-wrapper">
+          <img id="panel-img" src="" alt="Preview">
+          <div id="panel-info">Additional metadata or description goes here.</div>
+       </div>
+       
+       <a id="download-link" href="#" download class="download-button">
+         Download
+       </a>
+       <a id="open-link" href="#" target="_blank" rel="noopener noreferrer" class="download-button">
+         Open
+       </a>
+     </div>
+   </div>
+
+   <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+   <script src="search.js"></script>
+</body>
+</html>

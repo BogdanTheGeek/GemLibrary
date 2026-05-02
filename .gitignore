@@ -1,0 +1,9 @@
+node_modules/
+dist/
+build/
+**/.DS_Store
+**/Thumbs.db
+package-lock.json
+yarn.lock
+.env
+.env.local
