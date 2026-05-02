@@ -10,3 +10,6 @@ preview:
 
 organise:
 	node organise.js docs/models/
+
+rebase:
+	git reset --soft $(git rev-list --max-parents=0 HEAD)
