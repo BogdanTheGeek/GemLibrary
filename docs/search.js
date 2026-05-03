@@ -331,7 +331,7 @@ fetch('models/metadata.json')
 
 function openPanel(model) {
    const modelUrl = `https://bogdanthegeek.github.io/GemLibrary/models/${model.name}`;
-   const webRayUrl = `https://bogdanthegeek.github.io/WebRay/?model=${modelUrl}`;
+   const webRayUrl = `https://bogdanthegeek.github.io/PerfectGem/?model=${modelUrl}`;
 
    // Update panel content
    document.getElementById("panel-title").innerText = model.name;

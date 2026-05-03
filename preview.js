@@ -9,8 +9,8 @@ import {
    groupExternalFacetsForDesign,
    generateFacesFromFacetList,
    computeFacetNotesSummary,
-} from './WebRay/loaders.js';
-import { renderOrtho } from './WebRay/ortho.js';
+} from './PerfectGem/loaders.js';
+import { renderOrtho } from './PerfectGem/ortho.js';
 
 import fs from 'fs';
 import path from 'path';

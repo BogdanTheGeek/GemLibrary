@@ -7,7 +7,7 @@ import {
    loadGEM,
    computeFacetNotesSummary,
    groupExternalFacetsForDesign,
-} from './WebRay/loaders.js';
+} from './PerfectGem/loaders.js';
 import fs from 'fs';
 import path from 'path';
 

@@ -1,3 +1,3 @@
-[submodule "WebRay"]
-	path = WebRay
-	url = git@github.com:BogdanTheGeek/WebRay.git
+[submodule "PerfectGem"]
+	path = PerfectGem
+	url = git@github.com:BogdanTheGeek/PerfectGem.git
